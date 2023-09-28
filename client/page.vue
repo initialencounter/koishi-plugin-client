@@ -1,19 +1,44 @@
 <template>
-  <div v-if="data">{{ data }}</div>
+  <template v-if="data.type === 'str'">
+    <p>{{ data.content }}</p>
+  </template>
+  <template v-if="data.type === 'bool'">
+    <p>{{ data.content }}</p>
+  </template>
+  <template v-if="data.type === 'md'">
+    <k-markdown :source="data.content"></k-markdown>
+  </template>
 </template>
 
 <script lang="ts" setup>
 
-import { inject, computed, toRaw } from 'vue'
+// 将 koishi-plugin-client 改为你的插件全称
+import { } from 'koishi-plugin-client'
+
 import { store } from '@koishijs/client'
+import { inject, toRaw } from 'vue'
+
+namespace Data {
+  export type DataType = 'str' | 'bool' | 'md'
+}
+
+
+export interface Data {
+  type: Data.DataType
+  content: string
+}
 
 defineProps<{
   data: any
 }>()
 const current: any = inject('manager.settings.current')
 
-const data = computed(() => {
-  if (toRaw(current._value).label !== "client") return
+const data: Data = (() => {
+
+  // 判断插件配置页面的逻辑
+  const plgNanme = toRaw(current._value).label
+  // 将 client 改为你想要显示的插件页面
+  if (plgNanme !== "client") return
   return toRaw(store.client)
-})
+})()
 </script>

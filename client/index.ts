@@ -1,13 +1,15 @@
-import { Context } from '@koishijs/client'
+import { defineExtension } from '@koishijs/client'
 import Page from './page.vue'
+
+// 将 koishi-plugin-client 改为你的插件全称
 import { } from 'koishi-plugin-client'
 
-export default (ctx: Context) => {
-  // 此 Context 非彼 Context
-  // 我们只是在前端同样实现了一套插件逻辑
+export default defineExtension((ctx) => {
+
+  // 注入组件的方法
   ctx.slot({
     type: 'plugin-details',
     component: Page,
     order: -200,
   })
-}
+})
