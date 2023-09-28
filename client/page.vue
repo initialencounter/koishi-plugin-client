@@ -6,7 +6,7 @@
     <p>{{ data.content }}</p>
   </template>
   <template v-if="data.type === 'md'">
-    <k-markdown :source="data.content"></k-markdown>
+    <Markdown :source="data.content" class="markdown-inject"></Markdown>
   </template>
 </template>
 
@@ -14,7 +14,7 @@
 
 // 将 koishi-plugin-client 改为你的插件全称
 import { } from 'koishi-plugin-client'
-
+import Markdown from 'marked-vue'
 import { store } from '@koishijs/client'
 import { inject, toRaw } from 'vue'
 
@@ -42,3 +42,10 @@ const data: Data = (() => {
   return toRaw(store.client)
 })()
 </script>
+
+<style>
+.markdown-inject {
+  background-color: rgb(51, 124, 50);
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+</style>
