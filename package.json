@@ -1,6 +1,6 @@
 {
-  "name": "koishi-plugin-client",
-  "description": "",
+  "name": "koishi-plugin-console-inject",
+  "description": "控制台 vue 组件注入",
   "version": "0.0.1",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -8,7 +8,20 @@
     "lib",
     "dist"
   ],
-  "license": "MIT",
+  "license": "AGPL-3.0",
+  "author": {
+    "name": "initencounter",
+    "email": "2911583893@qq.com",
+    "url": "https://github.com/initialencounter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/initialencounter/koishi-plugin-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/initialencounter/koishi-plugin-client/issues"
+  },
+  "homepage": "https://github.com/initialencounter/koishi-plugin-client#readme.md",
   "scripts": {},
   "keywords": [
     "chatbot",
